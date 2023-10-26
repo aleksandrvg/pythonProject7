@@ -1,0 +1,44 @@
+CREATE DATABASE lesson;
+\c lesson
+
+CREATE TABLE user_type (
+id serial PRIMARY KEY,
+user_type varchar(64) NOT NULL
+);
+
+INSERT INTO user_type VALUES (1,'Продавец');
+SELECT * FROM user_type;
+
+CREATE TABLE human(
+id bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+first_name varchar(255) NOT NULL,
+second_name varchar(255) NOT NULL,
+third_name varchar(255),
+phone_number varchar(16) NOT NULL,
+dob date,
+user_type_id integer REFERENCES user_type(id)
+);
+
+DELETE FROM user_type WHERE (id=1);
+
+INSERT INTO user_type (id, user_type) VALUES (DEFAULT, 'Клиент'),
+(DEFAULT, 'Менеджер'),(DEFAULT, 'Продавец');
+
+SELECT * FROM user_type;
+
+\l
+
+\dt
+
+SELECT * FROM human;
+
+INSERT INTO human
+(first_name, second_name, third_name, phone_number, dob, user_type_id)
+VALUES
+('Олег', 'Кузнецов', 'Игоревич', '89123644652', '2022-09-12', 3),
+('Антон', 'Фамилия', 'Отчество', '89123634652', '2000-09-12', 1);
+
+SELECT * FROM human;
+
+SELECT * FROM user_type;
+
