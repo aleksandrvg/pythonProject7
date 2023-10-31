@@ -42,3 +42,35 @@ SELECT * FROM human;
 
 SELECT * FROM user_type;
 
+UPDATE human SET dob = '2002-05-10' WHERE id = 1;
+
+SELECT * FROM human;
+
+SELECT * FROM human ORDER BY id;
+
+SELECT * FROM human;
+
+ALTER TABLE human ADD email varchar(255);
+
+SELECT * FROM human;
+
+ALTER TABLE human RENAME COLUMN email to emails;
+
+SELECT * FROM human;
+
+ALTER TABLE human ALTER COLUMN emails SET DATA TYPE text;
+
+SELECT * FROM human;
+
+SELECT * FROM information_schema.columns WHERE table_catalog='lesson' and table_schema = 'public';
+
+SELECT * FROM human;
+
+ALTER TABLE human DROP COLUMN emails;
+
+SELECT * FROM human;
+
+SELECT table_catalog, table_name, column_name, data_type FROM information_schema.columns WHERE table_catalog='lesson' and table_schema = 'public';
+
+SELECT * FROM human;
+
