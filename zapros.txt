@@ -74,3 +74,51 @@ SELECT table_catalog, table_name, column_name, data_type FROM information_schema
 
 SELECT * FROM human;
 
+SELECT human.first_name, human.second_name, user_type.user_type
+FROM human
+INNER JOIN user_type
+ON human.user_type_id = user_type.id
+WHERE human.user_type_id = 3;
+
+SELECT *
+FROM human
+INNER JOIN user_type
+ON human.user_type_id = user_type.id
+WHERE human.user_type_id = 3;
+
+SELECT *
+FROM human
+INNER JOIN user_type
+ON human.user_type_id = user_type.id;
+
+SELECT *
+FROM human
+INNER JOIN user_type
+ON human.user_type_id = user_type.id AND human.user_type_id = 3;
+
+SELECT *
+FROM human
+FULL OUTER JOIN user_type
+ON human.user_type_id = user_type.id;
+
+CREATE TABLE zakaz (
+id serial PRIMARY KEY,
+human_id bigint REFERENCES human(id),
+number varchar(16)
+);
+
+INSERT INTO zakaz
+(human_id, number)
+VALUES
+(1, '1234123'),
+(1, '1234123'),
+(2, '1234124');
+
+SELECT * FROM zakaz;
+
+SELECT zakaz.number, human.first_name, human.second_name, user_type.user_type
+FROM zakaz
+INNER JOIN human
+ON zakaz.human_id = human.id
+INNER JOIN user_type
+ON human.user_type_id = user_type.id;
