@@ -1,0 +1,82 @@
+CREATE TABLE users (
+id serial PRIMARY KEY,
+name varchar(50) NOT NULL,
+mail varchar(50) NOT NULL,
+phone varchar(20) NOT NULL
+);
+
+SELECT * FROM users;
+
+INSERT INTO users
+(name, mail, phone)
+VALUES
+('Bob', 'bob@mail.com', '89127894163'),
+('Den', 'den@mail.com', '89121237496');
+
+SELECT * FROM users;
+
+INSERT INTO users VALUES (DEFAULT, 'Sem', 'sem@mail.com', '89124567193');
+
+SELECT * FROM users;
+
+CREATE TABLE rent (
+id serial PRIMARY KEY,
+rate varchar(10) NOT NULL
+);
+
+SELECT * FROM rent;
+
+INSERT INTO rent
+(rate)
+VALUES
+('hourly'),
+('minute');
+
+SELECT * FROM rent;
+
+CREATE TABLE parking (
+id serial PRIMARY KEY,
+location varchar(50) NOT NULL
+);
+
+SELECT * FROM parking;
+
+INSERT INTO parking
+(location)
+VALUES
+('north'),
+('south'),
+('west'),
+('east');
+
+SELECT * FROM parking;
+
+CREATE TABLE scooters (
+id serial PRIMARY KEY,
+scooter varchar(50) NOT NULL,
+battery varchar(50) NOT NULL
+);
+
+SELECT * FROM scooters;
+
+INSERT INTO scooters
+(scooter, battery)
+VALUES
+('scooter_1', '100%'),
+('scooter_2', '80%'),
+('scooter_3', '20%');
+
+SELECT * FROM scooters;
+
+CREATE TABLE orders (
+scooters_id integer REFERENCES scooters(id),
+parking_id integer REFERENCES parking(id),
+rent_id integer REFERENCES rent(id),
+users_id integer REFERENCES users(id),
+dates date,
+beginning time,
+ends time
+);
+
+SELECT * FROM orders;
+
