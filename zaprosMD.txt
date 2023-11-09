@@ -19,3 +19,9 @@ db.lesson2.find().limit(3)
 db.lesson2.find({"name":{$in:["Samokat5"]}})
 db.lesson2.find({"name":{$ne:"Samokat4"}})
 db.lesson2.find({name:"Samokat3"})
+
+db.lesson2.updateOne({name:"Samokat1"},{$set:{name:"Samokat10"}});
+db.lesson2.find({name:"Samokat1"})
+db.lesson2.find({name:"Samokat10"})
+db.lesson2.updateOne({name:"Samokat10"},{$set:{date:20}})
+db.lesson2.find({name:"Samokat10"})
