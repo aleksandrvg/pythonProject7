@@ -1,0 +1,21 @@
+use lesson
+db.lesson1.insertOne({name:"Oleg",second_name:"Kuznechov"},{name:"Larisa",second_name:"Bekambetova"});
+db.lesson1.insertMany([{name:"Oleg",second_name:"Kuznechov"},{name:"Larisa",second_name:"Bekambetova"}]);
+db.lesson1.find()
+db.lesson1.find({name:"Oleg"})
+db.lesson1.insertOne({name:"Oleg",second_name:"Kuznechov",role:{role_name:"Menedger",pay:20000}});
+db.lesson1.find({name:{$not:{$eq:"Oleg"}}})
+db.lesson1.find().limit(2)
+db.lesson1.find().limit(2).skip(1)
+db.lesson1.find({"name":{$ne:"Oleg"}})
+db.lesson1.find({"name":{$in:["Oleg"]}})
+
+db.lesson2.insertOne({name:"Samokat1",role:{role_name:"Red",pay:1000}});
+db.lesson2.insertOne({name:"Samokat2",role:{role_name:"blue",pay:2000}});
+db.lesson2.insertOne({name:"Samokat3",role:{role_name:"green",pay:3000}});
+db.lesson2.insertMany([{name:"Samokat4",role:{role_name:"yellow",pay:4000}},{name:"Samokat5",role:{role_name:"white",pay:5000}}]);
+db.lesson2.find()
+db.lesson2.find().limit(3)
+db.lesson2.find({"name":{$in:["Samokat5"]}})
+db.lesson2.find({"name":{$ne:"Samokat4"}})
+db.lesson2.find({name:"Samokat3"})
